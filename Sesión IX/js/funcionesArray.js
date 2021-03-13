@@ -25,5 +25,7 @@ const personOne = {
 */
 console.log("El color de mis ojos es " + person.eyeColor);
 console.log("Tengo " + person.age + " años");
-console.log("Me llamo " + persona["firstname"]);
-console.log("Mi apellido es " + persona["lastname"]);
+console.log("Me llamo " + person["firstname"]);
+console.log("Mi apellido es " + person["lastname"]);
+/* Ejemplo del llamado de propiedad que recibe como valor una función anonima */
+console.log("Otra vez mi nombre " + personOne.fullname());
