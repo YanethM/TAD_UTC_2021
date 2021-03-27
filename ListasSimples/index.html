@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container section">
+        <div class="row center">
+
+            <table class="striped">
+                <!-- Categoriás -->
+                <thead>
+                    <tr>
+                        <th>Fuente valor nodo</th>
+                        <th>Valor nodo</th>
+                    </tr>
+                </thead>
+                <!-- Registros -->
+                <tbody>
+                    <!-- Fila 1 -->
+                    <tr>
+                        <td>Cargar lista por default</td>
+                        <td><output id="arrayLista"></output></td>
+                    </tr>
+
+                    <!-- Fila 2: Usuario ingresa en un input text valores del nodo -->
+                    <tr>
+                        <!-- Se le solicita al usuario los valores -->
+                        <td>
+                            <div class="input-field col s6">
+                                <input type="text" name="nodos" id="nodos">
+                                <label for="nodos">Ingrese los valores separados por ","</label>
+                            </div>
+                        </td>
+                        <!-- Se muestran los valores ingresados por el usuario -->
+                        <td>
+                            <!-- a:link -->
+                            <a class="btn-floating btn-large waves-effect waves-light red" onclick="mostrarValInput()">
+                                <i class="material-icons">add</i>
+                            </a>
+                            <output id="valoresNodosInput"></output>
+                        </td>
+                    </tr>
+
+                    <!-- Fila 3 -->
+                    <tr>
+                        <td>
+                            <div class="file-field input-field">
+                                <!-- Botón que nos permite navegar en las carpetas del directorio raíz del pc -->
+                                <div class="btn">
+                                    <span>Subir imagen</span>
+                                    <input type="file" name="files[]" id="files" multiple>
+                                </div>
+                                <!-- Muestra la ruta de las imagen(es) seleccionada(s) por el usuario -->
+                                <div class="file-path-wrapper">
+                                    <input type="text" class="file-path validate">
+                                </div>
+                            </div>
+                        </td>
+                        <!-- Mostrar la imagen seleccionada -->
+                        <td>
+                            <output id="listaImagenes"></output>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+<script src="js/listasSimples.js"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</html>
