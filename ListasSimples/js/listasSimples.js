@@ -30,6 +30,33 @@ function seleccionImagenes(eventoSeleccionar) {
 /* Este método os sirve para registrar un evento a un objeto en especifico*/
 document.getElementById('files').addEventListener('change', seleccionImagenes, false);
 
+
+/* ---------------------METODO QUE PERMITE CARGAR CONTENIDO DE ARCHIVO TXT ------------------*/
+let input = myInput;
+let reader = new FileReader;
+input.addEventListener('change', onChange);
+
+function onChange(event) {
+    let archivoTxt = event.target.files[0];
+    /* readAsText se utiliza para leer el contenido de archivos, en este caso TXT */
+    reader.readAsText(archivoTxt);
+    reader.onload = onLoad;
+}
+
+/* Hacer la lectura del archivo */
+function onLoad() {
+    let contenido = reader.result;
+    /*  Hola
+        mundo */
+    let linea = contenido.split('\n');
+    let valoresLeidosTxt = "";
+    valoresLeidosTxt += linea;
+    document.getElementById("verContenidoTxt").innerHTML = valoresLeidosTxt;
+}
+
+
+
+
 /* ---------------------------------------CLASES NODO Y LISTAS SIMPLES-------------------------------- */
 class NodeClass {
 
