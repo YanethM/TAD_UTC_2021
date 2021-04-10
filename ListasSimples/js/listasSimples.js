@@ -1,10 +1,3 @@
-/* ---------------------METODO QUE CAPTURA VALORES DEL CAMPO INPUT ------------------*/
-let mostrarValInput = function() {
-    let valoresIngresadorUser = document.getElementById("nodos").value;
-    document.getElementById("valoresNodosInput").innerHTML = valoresIngresadorUser.split(",");
-
-}
-
 /* ---------------------METODO QUE PERMITE CARGAR IMAGENES ------------------*/
 function seleccionImagenes(eventoSeleccionar) {
     let files = eventoSeleccionar.target.files;
@@ -29,32 +22,6 @@ function seleccionImagenes(eventoSeleccionar) {
 }
 /* Este método os sirve para registrar un evento a un objeto en especifico*/
 document.getElementById('files').addEventListener('change', seleccionImagenes, false);
-
-
-/* ---------------------METODO QUE PERMITE CARGAR CONTENIDO DE ARCHIVO TXT ------------------*/
-let input = myInput;
-let reader = new FileReader;
-input.addEventListener('change', onChange);
-
-function onChange(event) {
-    let archivoTxt = event.target.files[0];
-    /* readAsText se utiliza para leer el contenido de archivos, en este caso TXT */
-    reader.readAsText(archivoTxt);
-    reader.onload = onLoad;
-}
-
-/* Hacer la lectura del archivo */
-function onLoad() {
-    let contenido = reader.result;
-    /*  Hola
-        mundo */
-    let linea = contenido.split('\n');
-    let valoresLeidosTxt = "";
-    valoresLeidosTxt += linea;
-    document.getElementById("verContenidoTxt").innerHTML = valoresLeidosTxt;
-}
-
-
 
 
 /* ---------------------------------------CLASES NODO Y LISTAS SIMPLES-------------------------------- */
@@ -207,18 +174,51 @@ class listasSimples {
             arregloLista.push(nodoVisitado.valor);
             nodoVisitado = nodoVisitado.next;
         }
-        document.getElementById("arrayLista").innerHTML = arregloLista;
+        return arregloLista;
     }
 }
 let listaSimple = new listasSimples();
+listaSimple.añadirNodoF(1);
+listaSimple.añadirNodoF(2);
+listaSimple.añadirNodoF(3);
+listaSimple.añadirNodoF(4);
 listaSimple.añadirNodoF(5);
 listaSimple.añadirNodoF(6);
 listaSimple.añadirNodoF(7);
 listaSimple.añadirNodoF(8);
 listaSimple.añadirNodoF(9);
 listaSimple.añadirNodoF(10);
-listaSimple.añadirNodoF(11);
-listaSimple.añadirNodoF(12);
-listaSimple.añadirNodoF(13);
 listaSimple.imprimirListaSimple();
-listaSimple.imprimirListaSimple();
+document.getElementById("arrayLista").innerHTML = listaSimple.imprimirListaSimple();
+
+const mostrarValInput = function() {
+    let valoresIngresadorUser = document.getElementById("nodos").value;
+    listaSimple.añadirNodoF(valoresIngresadorUser.split(","));
+    document.getElementById("valoresNodosInput").innerHTML = listaSimple.imprimirListaSimple();
+}
+
+/* ---------------------METODO QUE PERMITE CARGAR CONTENIDO DE ARCHIVO TXT ------------------*/
+let input = myInput;
+let reader = new FileReader;
+input.addEventListener('change', onChange);
+
+function onChange(event) {
+    let archivoTxt = event.target.files[0];
+    /* readAsText se utiliza para leer el contenido de archivos, en este caso TXT */
+    reader.readAsText(archivoTxt);
+    reader.onload = onLoad;
+}
+
+/* Hacer la lectura del archivo */
+function onLoad() {
+    let contenido = reader.result;
+    /*  Hola
+        mundo */
+    let linea = contenido.split('\n');
+    let valoresLeidosTxt = "";
+    valoresLeidosTxt += linea;
+    document.getElementById("verContenidoTxt").innerHTML = valoresLeidosTxt;
+    /* Añadir nodos nuevos con el contenido del archivo txt */
+    listaSimple.añadirNodoF(contenido.split('\n'));
+    document.getElementById("verContenidoTxt1").innerHTML = listaSimple.imprimirListaSimple();
+}
