@@ -13,14 +13,15 @@ function seleccionImagenes(eventoSeleccionar) {
                 /* Le damos un tamaño a la imagen y obtenemos el nombre de la imagen, extrayendo de la información */
                 span.innerHTML = ['<img class="thumb" width="100px" heigth="100px" src="', e.target.result, '"title ="', escape(archivoSeleccionado.name), '"/>'].join('');
                 document.getElementById("listaImagenes").insertBefore(span, null);
-
+                listaSimple.añadirNodoF(span.innerHTML = ['<img class="thumb" width="100px" heigth="100px" src="', e.target.result, '"title ="', escape(archivoSeleccionado.name), '"/>'].join(''));
+                document.getElementById("listaImagenes1").innerHTML = listaSimple.imprimirListaSimple();
             }
         })(f);
         /*readAsDataURL se utiliza para leer el contenido de un blob o un file  */
         apiCargueArchivos.readAsDataURL(f);
     }
 }
-/* Este método os sirve para registrar un evento a un objeto en especifico*/
+/* Este método nos sirve para registrar un evento a un objeto en especifico*/
 document.getElementById('files').addEventListener('change', seleccionImagenes, false);
 
 
